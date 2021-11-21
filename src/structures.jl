@@ -25,3 +25,5 @@ end
 
 @transform!(adjacency_df, :adjacent = calc_node_adjacncy(:N1_Row, :N1_Col, :N2_Row, :N2_Col))
 
+board_matrix = DataFrame(Row= rows, Col=cols, Snake = false, Apple = false)
+
