@@ -29,12 +29,42 @@ struct game
     board::DataFrame
     snake::snake
 end
+    
 
-function calc_node_adjacncy(r1::AbstractArray,c1::AbstractArray,r2::AbstractArray,c2::AbstractArray)
-    (abs.(r1 .- r2) .== 1) .& (abs.(c1 .- c2) .== 0) .| (abs.(r1 .- r2) .== 0) .& (abs.(c1 .- c2) .== 1)
-end
+    # Update the board
+    function update_board(move)
+        new_head = move_head(move)
 
-@transform!(adjacency_df, :adjacent = calc_node_adjacncy(:N1_Row, :N1_Col, :N2_Row, :N2_Col))
+        ### Check for fails ###
+        # Try to find new location on board, error if out of bounds
+        try 
+            new_node = @subset(board, (:Row .== new_head[1]) .& (:Col .== new_head[2]))
+        catch e
+            error("Out of Bounds!")
+        end
 
-board_matrix = DataFrame(Row= rows, Col=cols, Snake = false, Apple = false)
+        # create new tail for snake movement
+        new_tail = deepcopy(snake.tail)
 
+        # If snake body already at this node, error
+        if  new_node[1,:Snake] == 1 
+            error("The snake ate itself!")
+        # Check if snake got an apple
+        elseif new_node[1, :Apple] == 1
+            #Do snake gets longer, place new Apple
+            push!(new_tail, snake.head)
+
+        # Move the snake
+        else
+            #Do move snake
+            popfirst!(new_tail)
+            push!(new_tail, snake.head)
+        
+
+
+
+
+
+
+
+        
