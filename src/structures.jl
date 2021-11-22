@@ -45,7 +45,7 @@ end
 
         # create new tail for snake movement
         new_tail = deepcopy(snake.tail)
-
+        new_board = 
         # If snake body already at this node, error
         if  new_node[1,:Snake] == 1 
             error("The snake ate itself!")
@@ -53,7 +53,11 @@ end
         elseif new_node[1, :Apple] == 1
             #Do snake gets longer, place new Apple
             push!(new_tail, snake.head)
-
+            push!(new_tail, new_head)
+            @transform(board, :Snake = [[x.Row,x.Col] in new_tail for x in copy.(eachrow([:Row, :Col]))])
+            #=
+            turn row and col into a 2 elem vector 
+            check if vector is in tail=#
         # Move the snake
         else
             #Do move snake
