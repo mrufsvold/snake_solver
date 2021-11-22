@@ -27,9 +27,7 @@ end
 struct game
     grid_size::Int
     board::DataFrame
-    snake::snake
-end
-    
+    snake::snake    
 
     # Update the board
     function update_board(move)
@@ -59,7 +57,10 @@ end
             #Do move snake
             popfirst!(new_tail)
             push!(new_tail, snake.head)
-        
+        end
+    end
+end
+    
 
 
 
