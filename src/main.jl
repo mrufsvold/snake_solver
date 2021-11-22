@@ -1,3 +1,8 @@
-include("structures.jl")
+include("initial_setup.jl")
+using DataFrames: DataFrame
+using DataFramesMeta: @subset
 
-adjacency_df
+
+
+function update_board(move::x_move, board::DataFrame)
+    
