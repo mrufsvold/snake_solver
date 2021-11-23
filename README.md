@@ -91,6 +91,6 @@ if it works!
 - [x] Move Snake and Apple
 - [x] Update Board values
 - [x] Check for collisions
-- [ ] Save each state so the game can be replayed and analyzed
+- [x] Save each state so the game can be replayed and analyzed
 
 
