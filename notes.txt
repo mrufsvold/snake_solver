@@ -1,9 +1,6 @@
 Make project into a module for easier dev
-change snake struct into AbstractVector{Node}
-and create a Node struct to store row and col
 
 Basic Function
-    Update Snake Location
     Save state
 
 Visual Function
