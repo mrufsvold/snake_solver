@@ -1,19 +1,15 @@
 using Pkg
-Pkg.activate("../snake_solver")
+Pkg.activate(".")
 using Revise
-include("initial_setup.jl")
+includet("initial_setup.jl")
+includet("structures.jl")
 
-snake_pos = [1,0,0,0]
-apple_pos = [0,1,0,0]
-initial_board[:, :Snake] = snake_pos
-initial_board[:, :Apple] = apple_pos
+my_game = create_initial_state()
 
-initial_board
+for _ in 1:4
+    move = x_move(1)
+    global my_game
+    my_game = update_board(move, my_game)
+    @show my_game.board
+end
 
-include("structures.jl")
-
-move = x_move(1)
-my_snake = snake([1,1])
-my_game = game(initial_board,my_snake)
-
-new_status = update_board(move, my_game)
