@@ -84,10 +84,7 @@ if it works!
 - [ ] makes turns to follow path forever
 
 ### 0.2 Visualizing Game
-- [x] Draw a window
-- [x] Draw a rectangle
-- [x] Draw a row of rectangles
-- [ ] Move the rectangles
+- [x] Essential functions for writing to screen
 - [ ] Generate view from grid matrix
 - [ ] Add to main loop
 - [ ] Add optional wait
