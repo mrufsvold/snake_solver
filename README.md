@@ -1,5 +1,5 @@
 # Snake Solver
-![Snake Game Graphic](/1500006-200.png)
+[[/1500006-200.png]]
 ## Introduction
 
 Snake Solver is a tool for experimenting with different algorithmic solutions to
