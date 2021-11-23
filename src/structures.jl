@@ -3,9 +3,31 @@ using DataFramesMeta
 using DataFramesMeta: @subset!, @transform!, @eachrow
 using Random
 
+##### Game Objects ######
+
+struct Node
+    """Represent a node on the board"""
+    row::Int
+    col::Int
+end
+
+struct snake
+    """Represent the snake's location"""
+    body::AbstractVector{Node}
+    head::Node
+end
+
+snake(start_location::Node) = snake([start_location], start_location)
+snake(body::AbstractVector{Node}) = snake(body, last(body))
 
 
-###### Movement Options
+struct game_state
+    board::DataFrame
+    snake::snake 
+    ate_apple::Bool   
+end
+    
+###### Movement Options ########
 struct x_move
     val::Int
 end
@@ -14,12 +36,12 @@ struct y_move
     val::Int
 end
 
-function move_head(move::x_move, head::AbstractVector{Int})
-    [head[1], head[2]+ move.val]    
+function move_head(move::x_move, head::Node)
+    Node(head.row, head.col + 1) 
 end
 
-function move_head(move::y_move, head::AbstractVector{Int})
-    [head[1] + move.val, head[2]]
+function move_head(move::y_move, head::Node)
+    Node(head.row +1, head.col)
 end
 
 
