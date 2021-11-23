@@ -84,11 +84,14 @@ if it works!
 - [ ] makes turns to follow path forever
 
 ### 0.2 Visualizing Game
-- [ ] Draw a window
-- [ ] Draw a rectangle
-- [ ] Draw a row of rectangles
+- [x] Draw a window
+- [x] Draw a rectangle
+- [x] Draw a row of rectangles
 - [ ] Move the rectangles
 - [ ] Generate view from grid matrix
+- [ ] Add to main loop
+- [ ] Add optional wait
+- [ ] Optimize
 
 ### 0.1 Basic Functions
 - [x] Instantiate game state
