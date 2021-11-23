@@ -52,25 +52,14 @@ if it works!
 ## Configuration Options
 
 ## Development Roadmap 
-### 0.1 Basic Functions
-- [x] Instantiate game state
-- [x] Move Snake and Apple
-- [x] Update Board values
-- [x] Check for collisions
-- [ ] Save each state so the game can be replayed and analyzed
 
-### 0.2 Visualizing Game
+### 0.6 Multiple Reports
+- [ ] Setup report to accept multiple games from an outer Loop
+- [ ] Report min, max, and tertiles for game length and snake length
+- [ ] Parallelize running multiple games
 
-- [ ] Draw a window
-- [ ] Draw a rectangle
-- [ ] Draw a row of rectangles
-- [ ] Move the rectangles
-- [ ] Generate view from grid matrix
-
-### 0.3 Create Naive Solution
-- [ ] create function that takes game state
-- [ ] finds complete Hamltonian path
-- [ ] makes turns to follow path forever
+### 0.5 Loop analysis
+- [ ] Report number of moves, length of snake
 
 ### 0.4 Create Loop
 - [ ] Pass game state into solver
@@ -78,10 +67,23 @@ if it works!
 - [ ] has wait function to set fps
 - [ ] gracefully handle error
 
-### 0.5 Loop analysis
-- [ ] Report number of moves, length of snake
+### 0.3 Create Naive Solution
+- [ ] create function that takes game state
+- [ ] finds complete Hamltonian path
+- [ ] makes turns to follow path forever
 
-### 0.6 Multiple Reports
-- [ ] Setup report to accept multiple games from an outer Loop
-- [ ] Report min, max, and tertiles for game length and snake length
-- [ ] Parallelize running multiple games
+### 0.2 Visualizing Game
+- [ ] Draw a window
+- [ ] Draw a rectangle
+- [ ] Draw a row of rectangles
+- [ ] Move the rectangles
+- [ ] Generate view from grid matrix
+
+### 0.1 Basic Functions
+- [x] Instantiate game state
+- [x] Move Snake and Apple
+- [x] Update Board values
+- [x] Check for collisions
+- [ ] Save each state so the game can be replayed and analyzed
+
+
