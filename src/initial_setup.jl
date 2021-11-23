@@ -1,4 +1,4 @@
-using DataFrames: DataFrame, select
+using DataFrames
 using DataFramesMeta
 using DataFramesMeta: @subset!, @transform!
 import YAML
