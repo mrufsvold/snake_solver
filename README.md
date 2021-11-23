@@ -51,7 +51,7 @@ if it works!
 
 ## Configuration Options
 
-## Development Checklist 
+## Development Roadmap 
 ### 0.1 Basic Functions
 - [x] Instantiate game state
 - [x] Move Snake and Apple
