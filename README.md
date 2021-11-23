@@ -1,5 +1,5 @@
 # Snake Solver
-<figure><img src="/1500006-200.png"><figcaption>Snake Game Graphic</figcaption></figure>
+<figure><img src="images/1500006-200.png"><figcaption>Snake Game Graphic</figcaption></figure>
 
 ## Introduction
 
