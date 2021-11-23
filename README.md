@@ -50,6 +50,12 @@ Now, run `src/main.jl` and it will use the config to read in your solution and s
 if it works!
 
 ## Configuration Options
+|   Key             |   Val Type    |   Description       |
+|   ------          |   --------    |  -----------        |
+|   grid_size       |   Int         | The length of each side of the grid |
+|   sub_dir         |   str         | The solution directory to run     |
+|   file_name       |   str         | The solution main file to run |
+|   function_name   |   str         | The solution main function to run |
 
 ## Development Roadmap 
 
