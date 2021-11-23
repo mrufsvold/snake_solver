@@ -1,8 +1,10 @@
 using DataFrames
 using DataFramesMeta
-using DataFramesMeta: @subset!, @transform!
+using Random
 import YAML
-include("utils.jl")
+using Revise
+includet("utils.jl")
+includet("structures.jl")
 
 config = YAML.load_file("config.yml")
 grid_size = get(config, "grid_size", 3)
@@ -25,4 +27,17 @@ end
 
 @transform!(adjacency_df, :adjacent = calc_node_adjacncy(:N1_Row, :N1_Col, :N2_Row, :N2_Col))
 
-initial_board = DataFrame(Row= rows, Col=cols, Snake = 0, Apple = 0)
+function create_initial_state()
+    initial_board = DataFrame(Row= rows, Col=cols, Snake = 0, Apple = 0)
+    initial_apple = rand(collect(1:grid_size))
+    initial_snake = (initial_apple + rand(collect(1:grid_size - 2))) % grid_size + 1
+    # Add apple and snake to board
+    initial_board[initial_apple, :Apple] = 1
+    initial_board[initial_snake, :Snake] = 1
+    # Create Snake
+    snake_r::Int = initial_board[initial_board[!,:Snake] .== 1, :Row][1]
+    snake_c::Int = initial_board[initial_board[!,:Snake] .== 1, :Col][1]
+    i_snake = snake(Node(snake_r, snake_c))
+    
+    game_state(initial_board, i_snake, false)
+end
