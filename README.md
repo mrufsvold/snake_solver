@@ -59,8 +59,12 @@ if it works!
 |   function_name   |   str         | The solution main function to run |
 
 ## Development Roadmap 
+### 1.1 Nicities
+- [ ] Display color customization in Config
+- [ ] Comparison Reports after running multiple solutions
 
-### 0.6 Multiple Reports
+
+### 1.0 Multiple Reports
 - [ ] Setup report to accept multiple games from an outer Loop
 - [ ] Report min, max, and tertiles for game length and snake length
 - [ ] Parallelize running multiple games
