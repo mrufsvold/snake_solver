@@ -6,8 +6,7 @@ using Revise
 includet("utils.jl")
 includet("structures.jl")
 
-config = YAML.load_file("config.yml")
-grid_size = get(config, "grid_size", 3)
+grid_size = get_grid_size()
 
 rows = repeat_items(1:grid_size,grid_size)
 cols = repeat(1:grid_size,grid_size)
