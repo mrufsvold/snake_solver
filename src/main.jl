@@ -1,22 +1,35 @@
 using Pkg
 Pkg.activate(".")
 using Revise
+using DataFrames
 includet("initial_setup.jl")
 includet("structures.jl")
 includet("visualize.jl")
+includet("utils.jl")
+includet("Solutions/slow_and_steady/main.jl")
 
-my_game = create_initial_state()
+adjacency_df = create_adjacency_df()
+ 
+current_game_status = create_initial_state()
 
-moves = (y_move(-1), y_move(1))
+response = Response(
+    GameOver(false,""),
+    get_grid_size(), #grid_size
+    adjacency_df, #adjacency_df
+    x_move(0), #move
+    Dict() #user_data
+)
 
 game_record = []
-for m in 1:6
-    sleep(1)
-    move = moves[m%2+1]
-    @show move
-    global my_game
-    my_game = update_board(move, my_game)
-    draw_window(my_game.snake.body,my_game.apple)
-    push!(game_record, my_game)
+while ! response.game_over.status
+    global current_game_status
+    global response
+    sleep(0.01)
+    response = handler(current_game_status, response)
+    current_game_status = update_board(response.move, current_game_status)
+    draw_window(current_game_status.snake.body,current_game_status.apple)
+    # push!(game_record, current_game_status)
 end
+
+print(response.game_over.status)
 

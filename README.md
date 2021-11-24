@@ -73,15 +73,14 @@ if it works!
 - [ ] Report number of moves, length of snake
 
 ### 0.4 Create Loop
-- [ ] Pass game state into solver
-- [ ] Output Visual
-- [ ] has wait function to set fps
-- [ ] gracefully handle error
 
 ### 0.3 Create Naive Solution
-- [ ] create function that takes game state
-- [ ] finds complete Hamltonian path
-- [ ] makes turns to follow path forever
+- [x] Pass game state into solver
+- [ ] has wait function to set fps
+- [x] gracefully handle error
+- [x] create function that takes game state
+- [x] Simple logic for 1 hamiltonian path
+- [x] makes turns to follow path forever
 
 ### 0.2 Visualizing Game
 - [x] Essential functions for writing to screen
