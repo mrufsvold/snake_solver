@@ -23,7 +23,8 @@ snake(body::AbstractVector{Node}) = snake(body, last(body))
 
 struct game_state
     board::DataFrame
-    snake::snake 
+    snake::snake
+    apple::Node
     ate_apple::Bool   
 end
     
@@ -37,21 +38,24 @@ struct y_move
 end
 
 function move_head(move::x_move, head::Node)
-    Node(head.row, head.col + 1) 
+    Node(head.row, head.col + move.val) 
 end
 
 function move_head(move::y_move, head::Node)
-    Node(head.row +1, head.col)
+    println("y head move func")
+    println(move)
+    Node(head.row - move.val, head.col)
 end
 
 #### Base Functions ####
 
 function move_snake(move, current_snake::snake, ate_apple::Bool)
-    new_body = [deepcopy(current_snake.body); deepcopy(current_snake.head)]
     new_head = move_head(move, current_snake.head)
-    if ! ate_apple
-        popfirst!(new_body)
-    end
+    new_body = [deepcopy(current_snake.body); new_head]
+
+    # Remove first element if we didn't eat an apple
+    new_body = ate_apple ? new_body : new_body[2:end]
+
     snake(new_body, new_head)
 end
 
@@ -69,6 +73,7 @@ function update_board(move,current_game_state)
     
     new_snake = move_snake(move, current_game_state.snake, current_game_state.ate_apple)
     new_board = deepcopy(current_game_state.board)
+    apple = deepcopy(current_game_state.apple)
     # Delete Snake tail on board
     if ! current_game_state.ate_apple
         snake_tail = current_game_state.snake.body[1]
@@ -97,13 +102,15 @@ function update_board(move,current_game_state)
     
     if ate_apple
         new_board = move_apple(new_board)
+        apple_loc = new_board[new_board[!,:Apple] .==1,[:Row, :Col]]
+        apple = Node(apple_loc[1,:Row], apple_loc[1, :Col])
     end
-    
+
     # Add new_head to board
     new_board[
         ((new_board[!,:Row] .== new_snake.head.row) .& 
         (new_board[!,:Col] .== new_snake.head.col)),:Snake] = [1]
-    game_state(new_board, new_snake, ate_apple)
+    game_state(new_board, new_snake, apple, ate_apple)
 end
 
 

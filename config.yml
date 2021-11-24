@@ -1,1 +1,5 @@
 grid_size: 5
+solution_function:
+  sub_dir:
+  file_name:
+  function_name:

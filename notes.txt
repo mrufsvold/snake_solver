@@ -1,14 +1,4 @@
-Make project into a module for easier dev
 
-Basic Function
-    Save state
-
-Visual Function
-    Draw a window
-    Draw a rectangle
-    Draw a row of rectangles
-    Move the rectangles
-    Generate view from grid matrix
 
 
 

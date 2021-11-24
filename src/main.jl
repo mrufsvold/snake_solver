@@ -3,13 +3,20 @@ Pkg.activate(".")
 using Revise
 includet("initial_setup.jl")
 includet("structures.jl")
+includet("visualize.jl")
 
 my_game = create_initial_state()
 
-for _ in 1:4
-    move = x_move(1)
+moves = (y_move(-1), y_move(1))
+
+game_record = []
+for m in 1:6
+    sleep(1)
+    move = moves[m%2+1]
+    @show move
     global my_game
     my_game = update_board(move, my_game)
-    @show my_game.board
+    draw_window(my_game.snake.body,my_game.apple)
+    push!(game_record, my_game)
 end
 
