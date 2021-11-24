@@ -2,13 +2,18 @@ using Pkg
 Pkg.activate(".")
 using Revise
 using Gtk
+import YAML
+includet("utils.jl")
+includet("structures.jl")
+
+# Setup display window
 c = @GtkCanvas()
 set_gtk_property!(c,:expand,true)
 b = GtkBox(:h)
 push!(b,c)
 set_gtk_property!(b,:expand,c,true)
 win = GtkWindow(b, "Snake")
-grid_size = 5
+grid_size = get_grid_size()
 
 test_snake = [
     [1,2],
