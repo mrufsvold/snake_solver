@@ -12,6 +12,14 @@ adjacency_df = create_adjacency_df()
 
 current_game_status = create_initial_state()
 
+response = Response(
+    GameOver(false,""),
+    get_grid_size(), #grid_size
+    adjacency_df, #adjacency_df
+    x_move(0), #move
+    Dict() #user_data
+)
+
 game_record = []
 for m in 1:6
     sleep(1)

@@ -116,7 +116,13 @@ function update_board(move,current_game_state)
     game_state(new_board, new_snake, apple, ate_apple)
 end
 
+##### Admin Structs #####
 
-
-
+mutable struct Response
+    game_over::GameOver
+    grid_size::Int
+    adjacency_df::DataFrame
+    move::Union{x_move,y_move}
+    user_data::Dict
+end
         
