@@ -71,12 +71,11 @@ if it works!
 
 ### 0.5 Loop analysis
 - [ ] Report number of moves, length of snake
-
-### 0.4 Create Loop
+- [ ] has wait function to set fps
+- [ ] Quality of life improvements
 
 ### 0.3 Create Naive Solution
 - [x] Pass game state into solver
-- [ ] has wait function to set fps
 - [x] gracefully handle error
 - [x] create function that takes game state
 - [x] Simple logic for 1 hamiltonian path
