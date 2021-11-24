@@ -1,5 +1,3 @@
-using Pkg
-Pkg.activate(".")
 using Revise
 using Gtk
 import YAML
