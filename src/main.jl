@@ -20,16 +20,50 @@ response = Response(
     Dict() #user_data
 )
 
-game_record = []
-while ! response.game_over.status
+
+func_intro = """
+function run_the_game()
+    game_record = []
     global current_game_status
     global response
-    sleep(0.01)
-    response = handler(current_game_status, response)
-    current_game_status = update_board(response.move, current_game_status)
-    draw_window(current_game_status.snake.body,current_game_status.apple)
-    # push!(game_record, current_game_status)
-end
+    while ! response.game_over.status
 
-print(response.game_over.status)
+"""
+sleeptime = 1 / get_mps()
+sleep_func = "       sleep($sleeptime)"
+
+func_conclusion = """
+
+        response = handler(current_game_status, response)
+        current_game_status = update_board(response.move, current_game_status)
+        draw_window(current_game_status.snake.body,current_game_status.apple)
+        # push!(game_record, current_game_status)
+    end
+    print(response.game_over.status)
+end
+"""
+
+func_str = func_intro * sleep_func * func_conclusion
+
+@show func_str
+func_parsed = Meta.parse(func_str)
+@show func_parsed
+run_the_game = Meta.eval(func_parsed)
+@show run_the_game
+
+# function run_the_game()
+#     game_record = []
+#     while ! response.game_over.status
+#         global current_game_status
+#         global response
+#         sleep(0.01)
+#         response = handler(current_game_status, response)
+#         current_game_status = update_board(response.move, current_game_status)
+#         draw_window(current_game_status.snake.body,current_game_status.apple)
+#         # push!(game_record, current_game_status)
+#     end
+#     print(response.game_over.status)
+# end
+run_the_game()
+
 

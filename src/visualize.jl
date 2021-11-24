@@ -11,7 +11,7 @@ b = GtkBox(:h)
 push!(b,c)
 set_gtk_property!(b,:expand,c,true)
 win = GtkWindow(b, "Snake")
-grid_size = get_grid_size()
+grid_size = get_grid_size()    
 
 function draw_window(snake::AbstractVector{Node}, apple::Node)
     @guarded draw(c) do widget
@@ -33,6 +33,7 @@ function draw_window(snake::AbstractVector{Node}, apple::Node)
         #Get size for snake nodes
         cell_edge_length = (size-(border_width*2)) / grid_size
         # Paint snake nodes
+
         for node in snake
             rectangle(ctx, (node.col - 1)*cell_edge_length + border_width, (node.row-1)*cell_edge_length + border_width, cell_edge_length, cell_edge_length)
             set_source_rgb(ctx, 1, 1, 1)
