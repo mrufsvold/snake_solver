@@ -1,13 +1,16 @@
 using Pkg
 Pkg.activate(".")
 using Revise
+using DataFrames
 includet("initial_setup.jl")
 includet("structures.jl")
 includet("visualize.jl")
+includet("utils.jl")
+includet("Solutions/slow_and_steady/main.jl")
 
-my_game = create_initial_state()
+adjacency_df = create_adjacency_df()
 
-moves = (y_move(-1), y_move(1))
+current_game_status = create_initial_state()
 
 game_record = []
 for m in 1:6
