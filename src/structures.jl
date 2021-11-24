@@ -50,11 +50,12 @@ end
 #### Base Functions ####
 
 function move_snake(move, current_snake::snake, ate_apple::Bool)
-    new_body = [deepcopy(current_snake.body); deepcopy(current_snake.head)]
     new_head = move_head(move, current_snake.head)
-    if ! ate_apple
-        popfirst!(new_body)
-    end
+    new_body = [deepcopy(current_snake.body); new_head]
+
+    # Remove first element if we didn't eat an apple
+    new_body = ate_apple ? new_body : new_body[2:end]
+
     snake(new_body, new_head)
 end
 
