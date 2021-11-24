@@ -29,12 +29,15 @@ struct game_state
 end
     
 ###### Movement Options ########
+
 struct x_move
     val::Int
+    x_move(val::Int) = abs(val) <=1 ? new(val) : error("You can only move 1 spot at a time!")
 end
 
 struct y_move
     val::Int
+    y_move(val) = abs(val) <=1 ? new(val) : error("You can only move 1 spot at a time!")
 end
 
 function move_head(move::x_move, head::Node)
