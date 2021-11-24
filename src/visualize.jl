@@ -15,19 +15,7 @@ set_gtk_property!(b,:expand,c,true)
 win = GtkWindow(b, "Snake")
 grid_size = get_grid_size()
 
-test_snake = [
-    [1,2],
-    [1,3],
-    [2,3],
-    [3,3],
-    [4,3]
-]
-test_snake1 = deepcopy(test_snake)
-popfirst!(push!(test_snake,[4,4]))
-test_snake2 = deepcopy(test_snake)
-test_apple = [5,5]
-
-function draw_window(snake_list::Vector{Vector{Int}}, apple::Vector{Int})
+function draw_window(snake::AbstractVector{Node}, apple::Node)
     @guarded draw(c) do widget
         ctx = getgc(c)
         h = height(c)
@@ -47,18 +35,18 @@ function draw_window(snake_list::Vector{Vector{Int}}, apple::Vector{Int})
         #Get size for snake nodes
         cell_edge_length = (size-(border_width*2)) / grid_size
         # Paint snake nodes
-        for node in snake_list
-            rectangle(ctx, (node[1] - 1)*cell_edge_length + border_width, (node[2]-1)*cell_edge_length + border_width, cell_edge_length, cell_edge_length)
+        for node in snake
+            rectangle(ctx, (node.col - 1)*cell_edge_length + border_width, (node.row-1)*cell_edge_length + border_width, cell_edge_length, cell_edge_length)
             set_source_rgb(ctx, 1, 1, 1)
             fill(ctx)
         end
         # Paint apple
-        rectangle(ctx, (apple[1] - 1)*cell_edge_length + border_width, (apple[2]-1)*cell_edge_length + border_width, cell_edge_length, cell_edge_length)
+        rectangle(ctx, (apple.col - 1)*cell_edge_length + border_width, (apple.row - 1)*cell_edge_length + border_width, cell_edge_length, cell_edge_length)
         set_source_rgb(ctx, 1, 0, 0)
         fill(ctx)
     end
     showall(win)
 end
 
-draw_window(test_snake1, test_apple)
-draw_window(test_snake2, test_apple)
+# draw_window(test_snake1, test_apple)
+# draw_window(test_snake2, test_apple)
