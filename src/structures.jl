@@ -1,7 +1,10 @@
+module Structures
 using DataFrames
 using DataFramesMeta
 using DataFramesMeta: @subset!, @transform!, @eachrow
 using Random
+
+export Node, snake, GameOver, game_state, x_move, y_move, move_head, update_board, Response
 
 ##### Game Objects ######
 
@@ -145,4 +148,6 @@ mutable struct Response
     adjacency_df::DataFrame
     move::Union{x_move,y_move}
     user_data::Dict
+end
+
 end

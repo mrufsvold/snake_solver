@@ -5,6 +5,7 @@ import YAML
 using Revise
 includet("utils.jl")
 includet("structures.jl")
+using Main.Structures
 
 grid_size = get_grid_size()
 

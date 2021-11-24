@@ -1,5 +1,8 @@
+module Solution
+
 using Revise
 includet("../../structures.jl")
+using Structures
 
 function handler(current_game_state::game_state, response::Response)
 
@@ -23,4 +26,6 @@ function handler(current_game_state::game_state, response::Response)
 
     response.move = move
     return response
+end
+
 end

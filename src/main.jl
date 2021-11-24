@@ -22,11 +22,13 @@ response = Response(
 
 
 func_intro = """
-function run_the_game()
+function run_the_game(current_game_status, response)
+
+    include("Solutions/slow_and_steady/main.jl")
+    handler = Solution.handler
     game_record = []
-    global current_game_status
-    global response
-    while ! response.game_over.status
+    function while_wrapper(current_game_status, response)
+        while ! response.game_over.status
 
 """
 sleeptime = 1 / get_mps()
@@ -34,12 +36,14 @@ sleep_func = "       sleep($sleeptime)"
 
 func_conclusion = """
 
-        response = handler(current_game_status, response)
-        current_game_status = update_board(response.move, current_game_status)
-        draw_window(current_game_status.snake.body,current_game_status.apple)
-        # push!(game_record, current_game_status)
+            response = handler(current_game_status, response)
+            current_game_status = update_board(response.move, current_game_status)
+            draw_window(current_game_status.snake.body,current_game_status.apple)
+            # push!(game_record, current_game_status)
+        end
+        print(response.game_over.status)
     end
-    print(response.game_over.status)
+    while_wrapper(current_game_status, response)
 end
 """
 
@@ -50,7 +54,7 @@ func_parsed = Meta.parse(func_str)
 @show func_parsed
 run_the_game = Meta.eval(func_parsed)
 @show run_the_game
-
+run_the_game(current_game_status, response)
 # function run_the_game()
 #     game_record = []
 #     while ! response.game_over.status
@@ -64,6 +68,4 @@ run_the_game = Meta.eval(func_parsed)
 #     end
 #     print(response.game_over.status)
 # end
-run_the_game()
-
-
+# run_the_game()

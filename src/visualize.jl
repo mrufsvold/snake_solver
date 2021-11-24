@@ -3,6 +3,7 @@ using Gtk
 import YAML
 includet("utils.jl")
 includet("structures.jl")
+using Main.Structures
 
 # Setup display window
 c = @GtkCanvas()
