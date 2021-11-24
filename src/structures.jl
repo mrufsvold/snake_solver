@@ -102,8 +102,8 @@ function update_board(move,current_game_state)
     
     if ate_apple
         new_board = move_apple(new_board)
-        apple_loc = new_board[new_board[!,:Apple]==1,[:Row, :Col]]
-        apple = Node(apple_loc[1], apple_loc[2])
+        apple_loc = new_board[new_board[!,:Apple] .==1,[:Row, :Col]]
+        apple = Node(apple_loc[1,:Row], apple_loc[1, :Col])
     end
 
     # Add new_head to board
