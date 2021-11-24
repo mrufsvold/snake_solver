@@ -28,8 +28,8 @@ end
 
 function create_initial_state()
     initial_board = DataFrame(Row= rows, Col=cols, Snake = 0, Apple = 0)
-    initial_apple = rand(collect(1:grid_size))
-    initial_snake = (initial_apple + rand(collect(1:grid_size - 2))) % grid_size + 1
+    initial_apple = rand(collect(1:grid_size^2))
+    initial_snake = (initial_apple + rand(collect(1:grid_size^2 - 2))) % grid_size^2 + 1
     # Add apple and snake to board
     initial_board[initial_apple, :Apple] = 1
     initial_board[initial_snake, :Snake] = 1
