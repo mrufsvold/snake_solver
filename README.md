@@ -79,9 +79,9 @@ if it works!
 - [ ] gracefully handle error
 
 ### 0.3 Create Naive Solution
-- [ ] create function that takes game state
-- [ ] finds complete Hamltonian path
-- [ ] makes turns to follow path forever
+- [x] create function that takes game state
+- [x] Simple logic for 1 hamiltonian path
+- [x] makes turns to follow path forever
 
 ### 0.2 Visualizing Game
 - [x] Essential functions for writing to screen
