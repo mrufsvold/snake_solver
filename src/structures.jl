@@ -38,11 +38,13 @@ struct y_move
 end
 
 function move_head(move::x_move, head::Node)
-    Node(head.row, head.col + 1) 
+    Node(head.row, head.col + move.val) 
 end
 
 function move_head(move::y_move, head::Node)
-    Node(head.row +1, head.col)
+    println("y head move func")
+    println(move)
+    Node(head.row - move.val, head.col)
 end
 
 #### Base Functions ####
