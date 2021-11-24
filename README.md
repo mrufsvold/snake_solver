@@ -85,10 +85,10 @@ if it works!
 
 ### 0.2 Visualizing Game
 - [x] Essential functions for writing to screen
-- [ ] Generate view from grid matrix
-- [ ] Add to main loop
-- [ ] Add optional wait
-- [ ] Optimize
+- [x] Generate view from grid matrix
+- [x] Add to main loop
+- [x] Add optional wait
+- [x] Optimize
 
 ### 0.1 Basic Functions
 - [x] Instantiate game state
