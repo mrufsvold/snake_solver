@@ -1,5 +1,7 @@
 grid_size: 5
-solution_function:
-  sub_dir:
-  file_name:
-  function_name:
+# solution_function:
+#   sub_dir:
+#   file_name:
+#   function_name:
+moves_per_second: 4
+display_game: true
