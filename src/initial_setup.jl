@@ -37,6 +37,7 @@ function create_initial_state()
     snake_r::Int = initial_board[initial_board[!,:Snake] .== 1, :Row][1]
     snake_c::Int = initial_board[initial_board[!,:Snake] .== 1, :Col][1]
     i_snake = snake(Node(snake_r, snake_c))
-    
-    game_state(initial_board, i_snake, false)
+    apple_loc = initial_board[initial_board[!,:Apple].==1,[:Row, :Col]]
+    apple = Node(apple_loc[1,:Row], apple_loc[1, :Col])
+    game_state(initial_board, i_snake, apple, false)
 end
